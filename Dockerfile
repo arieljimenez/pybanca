@@ -1,18 +1,24 @@
 FROM frolvlad/alpine-glibc
 
-# DIRS
-RUN mkdir -p /app
-
 # ENV VARS
-ENV PYTHONUNBUFFERED=1
+ENV APPDIR=/app
+
+# DIRS
+RUN mkdir -p $APPDIR
+
 
 # SYSTEM
-RUN apk add --update --no-cache ca-certificates \
-                                gcc \
-                                nodejs-npm \
-                                python2 \
-                                python3 \
-                                build-base
+RUN apk add --update --no-cache \
+    ca-certificates \
+    gcc \
+    nodejs-npm \
+    mysql \
+    mysql-client \
+    python2 \
+    python3 \
+    build-base \
+    py-sqlalchemy
+
 
 # Build japronto
 RUN apk add --no-cache --virtual .build-deps py3-pip build-base python3-dev && \
@@ -27,8 +33,8 @@ RUN pip3 install --upgrade pip setuptools && \
 # JS
 RUN npm install -g elm --unsafe-perm=true
 
-WORKDIR /app
+WORKDIR $APPDIR
 
-EXPOSE 80 8000
+EXPOSE 80 8000 8306
 
-CMD ["/bin/sh", "/app/scripts/start.sh"]
+CMD "/bin/sh" $APPDIR"/scripts/start.sh"
