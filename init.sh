@@ -1,6 +1,6 @@
 NAME_CONT="pyBanca"
 IMAGE="pybanca"
-VER="v0.2"
+VER="contv0.1"
 
 ctx=`docker ps -aqf name=$NAME_CONT`
 if [ -z $ctx ]; then
@@ -10,8 +10,9 @@ if [ -z $ctx ]; then
 
   docker run -it \
     --name $NAME_CONT \
-    -p 80:80 -p 8000:8000 -p 8306:8306 \
+    -p 80:80 -p 8000:8000 -p 8306:8306 -p 8080:8080 \
     -v ${PWD}:/app \
+    -v ${PWD}/nginx.conf:/etc/nginx/nginx.conf \
     frismaury/${IMAGE}:${VER}
 else
   echo "+------------------------+"

@@ -1,11 +1,11 @@
-# pyBanca Boilerplate
+# pyBanca Infrastructure
 
 >Infraestructure behind the app.
 
 ## STACK (wip)
 
 - [Elmlang](http://elm-lang.org/) for the frontend. Runing at port **80**.
-- [Japronto](https://github.com/squeaky-pl/japronto) for the WSGI/API service. Runing at port **8000**.
+- [Japronto](https://github.com/squeaky-pl/japronto) for the WSGI/API service. Runing at port **8080** proxy-served by port **8000**.
 - SQLAlchemy as ORM.
 - MariaDB as RDBMS. Runing at port **8336**.
 
@@ -52,4 +52,8 @@
 ### Q/A
 
 - **Q:** _Why ignore the package-lock.json?_
-  - **A:** this introduces more conflicts and problems than resolve ([ref](https://stackoverflow.com/questions/44297803/package-lock-json-role)).
+  - this introduces more conflicts and problems than resolve ([ref](https://stackoverflow.com/questions/44297803/package-lock-json-role)).
+- **How to update/deploy a new image?**
+  - `$ docker commit ${CONTAINER_NAME} ${USER}/${DESIRED_IMAGE_NAME}:${DESIRED_TAG}`
+  - `$ docker push ${USER}/${DESIRED_IMAGE_NAME}:${DESIRED_TAG}`
+  - update the init.sh.
