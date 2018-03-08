@@ -1,10 +1,8 @@
 # coding=utf-8
 import datetime
-import logging
 
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, DateTime
-from models.DB import Base
+from Database import Base, Session
 
 from werkzeug import generate_password_hash, check_password_hash
 
@@ -33,8 +31,20 @@ class User(Base):
                                                           self.password, self.email, self.created_at)
 
     def set_password(self, password):
-        logging.error(len(generate_password_hash(password)))
         self.password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.pwdhash, password)
+
+
+def get_all_users():
+    session = Session()
+
+    json = {}
+    users = session.query(User).all()
+
+    for user in users:
+        json[user.username] = user.lastname
+
+    session.close()
+    return json
