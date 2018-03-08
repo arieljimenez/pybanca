@@ -4,8 +4,8 @@ FROM frolvlad/alpine-glibc
 ENV APPDIR=/app
 
 # DIRS
-RUN mkdir -p $APPDIR
-
+RUN mkdir -p $APPDIR \
+    /run/nginx
 
 # SYSTEM
 RUN apk add --update --no-cache \
@@ -17,7 +17,8 @@ RUN apk add --update --no-cache \
     python2 \
     python3 \
     build-base \
-    py-sqlalchemy
+    py-sqlalchemy \
+    nginx
 
 
 # Build japronto
@@ -35,6 +36,6 @@ RUN npm install -g elm --unsafe-perm=true
 
 WORKDIR $APPDIR
 
-EXPOSE 80 8000 8306
+EXPOSE 80 8000 8080 8306
 
 CMD "/bin/sh" $APPDIR"/scripts/start.sh"
