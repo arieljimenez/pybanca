@@ -4,10 +4,10 @@
 
 ## STACK (wip)
 
-- [Elmlang](http://elm-lang.org/) for the frontend.
-- [Japronto](https://github.com/squeaky-pl/japronto) for the WSGI/API service.
+- [Elmlang](http://elm-lang.org/) for the frontend. Runing at port **80**.
+- [Japronto](https://github.com/squeaky-pl/japronto) for the WSGI/API service. Runing at port **8000**.
 - SQLAlchemy as ORM.
-- MariaDB as RDBMS.
+- MariaDB as RDBMS. Runing at port **8336**.
 
 ## CI
 
@@ -47,6 +47,7 @@
 - Do a stress test: lets see if that of **1.2** millons of *request* are true.
 - Update Webpack to 4.
 - Facture the stack in microservices.
+- Research about python watcher.
 
 ### Q/A
 
