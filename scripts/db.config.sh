@@ -38,5 +38,5 @@ fi
 
 # Run mysql and do migrations
 mysqld --user=root & \
-    sleep 1.5 && cd $APPDIR/src/back && \
+    sleep 1.5 && cd $APPDIR/src/pybanca-back && \
     python3 migrations.py
