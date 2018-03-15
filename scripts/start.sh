@@ -23,5 +23,5 @@ echo "|    Runing pyBanca    |"
 echo $DIV
 
 nginx &
-cd $APPDIR/src/back/ && python3 main.py &
+cd $APPDIR/src/pybanca-back/ && python3 main.py &
 cd $APPDIR && npm run watch
