@@ -1,7 +1,13 @@
+#!/bin/bash
 NAME_CONT="pyBanca"
 IMAGE="pybanca"
 VER="contv0.1"
+DIV="+------------------------+"
 
+# Clone the necessary repositories
+. ./scripts/cloneRepos.sh
+
+# Run or create the container
 ctx=`docker ps -aqf name=$NAME_CONT`
 if [ -z $ctx ]; then
   echo "+------------------------+"
