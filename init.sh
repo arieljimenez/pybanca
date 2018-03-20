@@ -1,7 +1,8 @@
 #!/bin/bash
-NAME_CONT="pyBanca"
+NAME_CONT="pybanca"
 IMAGE="pybanca"
-VER="contv0.1"
+# VER="contv0.1"
+VER="v0.3"
 DIV="+------------------------+"
 
 # Clone the necessary repositories
